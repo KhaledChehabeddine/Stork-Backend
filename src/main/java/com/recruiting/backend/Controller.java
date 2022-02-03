@@ -8,6 +8,6 @@ public class Controller {
   
   @GetMapping("/home")
   public String home() {
-    return "Welcome to Strokruiting api";
+    return "Welcome to Storkrecruit api";
   }
 }
