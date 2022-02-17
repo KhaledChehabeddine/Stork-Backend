@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.Serializable;
 
 @Entity
-public class Applicant implements Serializable {
+public class Candidate implements Serializable {
     @Id
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,9 +16,9 @@ public class Applicant implements Serializable {
     private String imageUrl;
     private File resume;
 
-    public Applicant() { }
+    public Candidate() { }
 
-    public Applicant(Long id, String name, String email, String phone, String imageUrl, File resume) {
+    public Candidate(Long id, String name, String email, String phone, String imageUrl, File resume) {
         this.id = id;
         this.name = name;
         this.email = email;
