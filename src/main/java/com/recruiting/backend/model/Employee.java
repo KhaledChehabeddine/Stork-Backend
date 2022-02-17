@@ -10,7 +10,7 @@ public class Employee implements Serializable {
     @Id
     @Column(nullable = false)
     private Long id;
-    private String name;
+    private String firstName, lastName;
     private String email;
     private String jobTitle;
     private String phone;
@@ -18,8 +18,9 @@ public class Employee implements Serializable {
 
     public Employee() {}
 
-    public Employee(String name, String email, String jobTitle, String phone, String imageUrl) {
-        this.name = name;
+    public Employee(String firstName, String lastName, String email, String jobTitle, String phone, String imageUrl) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.jobTitle = jobTitle;
         this.phone = phone;
@@ -34,13 +35,13 @@ public class Employee implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return this.name;
-    }
+    public String getFirstName() { return this.firstName; }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    public void setFirstName(String firstName) { this.firstName = firstName; }
+
+    public String getLastName() { return this.lastName; }
+
+    public void setLastName(String lastName) { this.lastName = lastName; }
 
     public String getEmail() {
         return this.email;
@@ -77,7 +78,7 @@ public class Employee implements Serializable {
     @Override
     public String toString() {
         return "Employee{id=" + id +
-                ", name='" + name + "'" +
+                ", name='" + firstName + " " + lastName + "'" +
                 ", email='" + email + "'" +
                 ", jobTitle='" + jobTitle + "'" +
                 ", phone='" + phone + "'" +

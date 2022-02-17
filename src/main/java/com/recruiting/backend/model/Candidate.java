@@ -11,16 +11,17 @@ public class Candidate implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String email;
-    private String name;
+    private String firstName, lastName;
     private String phone;
     private String imageUrl;
     private File resume;
 
     public Candidate() { }
 
-    public Candidate(Long id, String name, String email, String phone, String imageUrl, File resume) {
+    public Candidate(Long id, String firstName, String lastName, String email, String phone, String imageUrl, File resume) {
         this.id = id;
-        this.name = name;
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.email = email;
         this.phone = phone;
         this.imageUrl = imageUrl;
@@ -35,13 +36,17 @@ public class Candidate implements Serializable {
         this.id = id;
     }
 
-    public String getName() {
-        return this.name;
+    public String getFirstName() {
+        return this.firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
+
+    public String getLastName() { return this.lastName; }
+
+    public void setLastName(String lastName) { this.lastName = lastName; }
 
     public String getEmail() {
         return this.email;
@@ -78,7 +83,7 @@ public class Candidate implements Serializable {
     @Override
     public String toString() {
         return "Employee{id='" + id + "'" +
-                ", name='" + name + "'" +
+                ", name='" + firstName + " " + lastName + "'" +
                 ", email='" + email + "'" +
                 ", phone='" + phone + "'" +
                 ", imageUrl='" + imageUrl + "'" +
