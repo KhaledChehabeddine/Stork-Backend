@@ -1,4 +1,4 @@
-package com.recruiting.backend;
+package com.recruiting.backend.controller;
 
 import com.recruiting.backend.model.Employee;
 import com.recruiting.backend.service.EmployeeService;
