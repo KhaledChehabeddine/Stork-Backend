@@ -14,17 +14,22 @@ public class Candidate implements Serializable {
     private String firstName, lastName;
     private String phone;
     private String imageUrl;
+    private String date;
+    private String address;
     private File resume;
 
     public Candidate() { }
 
-    public Candidate(Long id, String firstName, String lastName, String email, String phone, String imageUrl, File resume) {
+    public Candidate(Long id, String firstName, String lastName, String email, String phone, String imageUrl,
+                     String date, String address, File resume) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
         this.imageUrl = imageUrl;
+        this.date = date;
+        this.address = address;
         this.resume = resume;
     }
 
@@ -70,6 +75,22 @@ public class Candidate implements Serializable {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public File getResume() {
