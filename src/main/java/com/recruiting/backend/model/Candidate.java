@@ -13,25 +13,23 @@ public class Candidate implements Serializable {
     private Long id;
     private String email;
     private String firstName, lastName;
+    private String country;
+    private String sex;
     private String phone;
-    private String imageUrl;
     private Date date;
-    private String address;
-    private File resume;
 
     public Candidate() { }
 
-    public Candidate(Long id, String firstName, String lastName, String email, String phone, String imageUrl,
-                     Date date, String address, File resume) {
+    public Candidate(Long id, String firstName, String lastName, String email, String phone, String country, String sex,
+                     Date date) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.phone = phone;
-        this.imageUrl = imageUrl;
         this.date = date;
-        this.address = address;
-        this.resume = resume;
+        this.country = country;
+        this.sex = sex;
     }
 
     public Long getId() {
@@ -70,14 +68,6 @@ public class Candidate implements Serializable {
         this.phone = phone;
     }
 
-    public String getImageUrl() {
-        return this.imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
-    }
-
     public Date getDate() {
         return date;
     }
@@ -86,30 +76,20 @@ public class Candidate implements Serializable {
         this.date = date;
     }
 
-    public String getAddress() {
-        return address;
-    }
+    public String getCountry() { return country; }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
+    public void setCountry(String country) { this.country = country; }
 
-    public File getResume() {
-        return this.resume;
-    }
+    public String getSex() { return sex; }
 
-    public void setResume(File resume) {
-        this.resume = resume;
-    }
+    public void setSex() { this.sex = sex; }
 
     @Override
     public String toString() {
-        return "Employee{id='" + id + "'" +
+        return "Candidate{id='" + id + "'" +
                 ", name='" + firstName + " " + lastName + "'" +
                 ", email='" + email + "'" +
                 ", phone='" + phone + "'" +
-                ", imageUrl='" + imageUrl + "'" +
                 "}";
     }
-
 }
