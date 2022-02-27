@@ -25,7 +25,7 @@ public class VacancyController {
     }
 
     @GetMapping("/find")
-    public ResponseEntity<Vacancy> getVacancyById(@RequestParam("id") Long id) {
+    public ResponseEntity<Vacancy> findVacancyById(@RequestParam("id") Long id) {
         Vacancy vacancy = vacancyService.findVacancyById(id);
         return new ResponseEntity<>(vacancy, HttpStatus.OK);
     }
