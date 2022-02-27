@@ -2,6 +2,7 @@ package com.recruiting.backend.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 public class Vacancy implements Serializable {
@@ -13,13 +14,13 @@ public class Vacancy implements Serializable {
     private String country;
     private String city;
     private String jobDescription;
-    private String datePosted;
-    private String deadline;
+    private Date datePosted;
+    private Date deadline;
 
     public Vacancy () {}
 
-    public Vacancy(Long id, String jobTitle, String country, String city, String jobDescription, String datePosted,
-                   String deadline) {
+    public Vacancy(Long id, String jobTitle, String country, String city, String jobDescription, Date datePosted,
+                   Date deadline) {
         this.id = id;
         this.jobTitle = jobTitle;
         this.country = country;
@@ -69,19 +70,19 @@ public class Vacancy implements Serializable {
         this.jobDescription = jobDescription;
     }
 
-    public String getDatePosted() {
+    public Date getDatePosted() {
         return datePosted;
     }
 
-    public void setDatePosted(String datePosted) {
+    public void setDatePosted(Date datePosted) {
         this.datePosted = datePosted;
     }
 
-    public String getDeadline() {
+    public Date getDeadline() {
         return deadline;
     }
 
-    public void setDeadline(String deadline) {
+    public void setDeadline(Date deadline) {
         this.deadline = deadline;
     }
 
