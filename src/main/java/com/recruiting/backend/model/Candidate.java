@@ -3,6 +3,7 @@ package com.recruiting.backend.model;
 import javax.persistence.*;
 import java.io.File;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 public class Candidate implements Serializable {
@@ -14,14 +15,14 @@ public class Candidate implements Serializable {
     private String firstName, lastName;
     private String phone;
     private String imageUrl;
-    private String date;
+    private Date date;
     private String address;
     private File resume;
 
     public Candidate() { }
 
     public Candidate(Long id, String firstName, String lastName, String email, String phone, String imageUrl,
-                     String date, String address, File resume) {
+                     Date date, String address, File resume) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -77,11 +78,11 @@ public class Candidate implements Serializable {
         this.imageUrl = imageUrl;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
