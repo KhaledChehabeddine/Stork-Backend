@@ -36,7 +36,7 @@ public class    CandidateController {
         return new ResponseEntity<>(newCandidate, HttpStatus.CREATED);
     }
 
-    @PostMapping("/update")
+    @PutMapping("/update")
     public ResponseEntity<Candidate> updateCandidate(@RequestBody Candidate candidate) {
         Candidate updatedCandidate = candidateService.updateCandidate(candidate);
         return new ResponseEntity<>(updatedCandidate, HttpStatus.OK);
