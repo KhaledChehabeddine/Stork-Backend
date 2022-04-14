@@ -1,7 +1,9 @@
 package com.recruiting.backend.model;
 
+import net.bytebuddy.implementation.bind.annotation.Default;
+import org.springframework.boot.context.properties.bind.DefaultValue;
+
 import javax.persistence.*;
-import java.io.File;
 import java.io.Serializable;
 import java.util.Date;
 
@@ -17,11 +19,12 @@ public class Candidate implements Serializable {
     private String sex;
     private String phone;
     private Date date;
+    private String status = "Pending";
 
     public Candidate() { }
 
     public Candidate(Long id, String firstName, String lastName, String email, String phone, String country, String sex,
-                     Date date) {
+                     Date date, String status) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -30,6 +33,7 @@ public class Candidate implements Serializable {
         this.date = date;
         this.country = country;
         this.sex = sex;
+        this.status = status;
     }
 
     public Long getId() {
@@ -84,12 +88,17 @@ public class Candidate implements Serializable {
 
     public void setSex() { this.sex = sex; }
 
+    public String getStatus() { return status; }
+
+    public void setStatus(String status) { this.status = status; }
+
     @Override
     public String toString() {
         return "Candidate{id='" + id + "'" +
                 ", name='" + firstName + " " + lastName + "'" +
                 ", email='" + email + "'" +
                 ", phone='" + phone + "'" +
+                ", status='" + status + "'" +
                 "}";
     }
 }
