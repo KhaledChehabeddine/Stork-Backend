@@ -9,18 +9,18 @@ public class Interview implements Serializable {
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long candidate_id;
-    private Long vacancy_id;
-    private String date_time;
+    private Long candidateId;
+    private Long vacancyId;
+    private String dateTime;
     private String description;
 
     public Interview() { }
 
     public Interview(Long id, String candidate_id, String vacancy_id, String date_time, String description) {
         this.id = id;
-        this.candidate_id = Long.parseLong(candidate_id);
-        this.vacancy_id = Long.parseLong(vacancy_id);
-        this.date_time = date_time;
+        this.candidateId = Long.parseLong(candidate_id);
+        this.vacancyId = Long.parseLong(vacancy_id);
+        this.dateTime = date_time;
         this.description = description;
     }
 
@@ -28,17 +28,17 @@ public class Interview implements Serializable {
 
     public void setId(Long id) { this.id = id; }
 
-    public Long getCandidate_id() { return candidate_id; }
+    public Long getCandidateId() { return candidateId; }
 
-    public void setCandidate_id(Long candidate_id) { this.candidate_id = candidate_id; }
+    public void setCandidateId(Long candidate_id) { this.candidateId = candidate_id; }
 
-    public Long getVacancy_id() { return vacancy_id; }
+    public Long getVacancyId() { return vacancyId; }
 
-    public void setVacancy_id(Long vacancy_id) { this.vacancy_id = vacancy_id; }
+    public void setVacancyId(Long vacancy_id) { this.vacancyId = vacancy_id; }
 
-    public String getDate_time() { return date_time; }
+    public String getDateTime() { return dateTime; }
 
-    public void setDate_time(String date_time) { this.date_time = date_time; }
+    public void setDateTime(String date_time) { this.dateTime = date_time; }
 
     public String getDescription() { return description; }
 
@@ -47,9 +47,9 @@ public class Interview implements Serializable {
     @Override
     public String toString() {
         return "Interview{id='" + id + "'" +
-                ", candidate_id='" + candidate_id + "'" +
-                ", vacancy_id='" + vacancy_id + "'" +
-                ", date_time='" + date_time + "'" +
+                ", candidate_id='" + candidateId + "'" +
+                ", vacancy_id='" + vacancyId + "'" +
+                ", date_time='" + dateTime + "'" +
                 ", description='" + description + "'" +
                 "}";
     }

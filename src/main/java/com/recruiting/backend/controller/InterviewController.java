@@ -2,6 +2,7 @@ package com.recruiting.backend.controller;
 
 import com.recruiting.backend.model.Interview;
 import com.recruiting.backend.service.InterviewService;
+import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +28,12 @@ public class InterviewController {
     public ResponseEntity<Interview> getInterviewById(@RequestParam("id") Long id) {
         Interview interview = interviewService.findInterviewById(id);
         return new ResponseEntity<>(interview, HttpStatus.OK);
+    }
+
+    @GetMapping("/candidate")
+    public ResponseEntity<List<Interview>> getInterviewsByCandidateId(@RequestParam("candidateId") Long candidateId) {
+        List<Interview> lst = interviewService.findInterviewsByCandidateId(candidateId);
+        return new ResponseEntity<>(lst, HttpStatus.OK);
     }
 
     @PostMapping("/add")
