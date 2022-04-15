@@ -1,6 +1,7 @@
 package com.recruiting.backend.service;
 
 import com.recruiting.backend.exception.InterviewNotFoundException;
+import com.recruiting.backend.exception.UserNotFoundException;
 import com.recruiting.backend.model.Interview;
 import com.recruiting.backend.repo.InterviewRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,11 @@ public class InterviewService {
     public Interview findInterviewById(Long id) {
         return interviewRepo.findInterviewById(id)
                 .orElseThrow(() -> new InterviewNotFoundException("Interview with id: '" + id + "' not found."));
+    }
+
+    public List<Interview> findInterviewsByCandidateId(Long candidateId) {
+        return interviewRepo.findInterviewsByCandidateId(candidateId)
+                .orElseThrow(() -> new UserNotFoundException("Candidate with id: " + candidateId + " is not found"));
     }
 
     public void deleteInterview(Long id) { interviewRepo.deleteInterviewById(id); }
