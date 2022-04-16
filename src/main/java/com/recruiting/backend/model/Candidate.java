@@ -1,8 +1,5 @@
 package com.recruiting.backend.model;
 
-import net.bytebuddy.implementation.bind.annotation.Default;
-import org.springframework.boot.context.properties.bind.DefaultValue;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;

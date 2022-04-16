@@ -15,19 +15,21 @@ public class Vacancy implements Serializable {
     private String city;
     private String jobDescription;
     private Date datePosted;
-    private Date deadline;
+    private String workType;
+    private String employmentType;
 
     public Vacancy () {}
 
     public Vacancy(Long id, String jobTitle, String country, String city, String jobDescription, Date datePosted,
-                   Date deadline) {
+                   String workType, String employmentType) {
         this.id = id;
         this.jobTitle = jobTitle;
         this.country = country;
         this.city = city;
         this.jobDescription = jobDescription;
         this.datePosted = datePosted;
-        this.deadline = deadline;
+        this.workType = workType;
+        this.employmentType = employmentType;
     }
 
     public Long getId() {
@@ -78,12 +80,20 @@ public class Vacancy implements Serializable {
         this.datePosted = datePosted;
     }
 
-    public Date getDeadline() {
-        return deadline;
+    public String getWorkType() {
+        return workType;
     }
 
-    public void setDeadline(Date deadline) {
-        this.deadline = deadline;
+    public void setWorkType(String workType) {
+        this.workType = workType;
+    }
+
+    public String getEmploymentType() {
+        return employmentType;
+    }
+
+    public void setEmploymentType(String employmentType) {
+        this.employmentType = employmentType;
     }
 
     @Override
@@ -94,7 +104,6 @@ public class Vacancy implements Serializable {
                 ", city='" + city + "'" +
                 ", description='" + jobDescription + "'" +
                 ", datePosted='" + datePosted + "'" +
-                ", deadline='" + deadline + "'" +
                 "}";
     }
 }

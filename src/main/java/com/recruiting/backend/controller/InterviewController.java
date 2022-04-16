@@ -5,6 +5,7 @@ import com.recruiting.backend.service.InterviewService;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -48,6 +49,7 @@ public class InterviewController {
         return new ResponseEntity<>(updatedInterview, HttpStatus.OK);
     }
 
+    @Transactional
     @PostMapping("/delete")
     public ResponseEntity<?> deleteInterview(@RequestParam("id") Long id) {
         interviewService.deleteInterview(id);
