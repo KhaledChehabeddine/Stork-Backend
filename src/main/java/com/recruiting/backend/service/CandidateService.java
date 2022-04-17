@@ -4,6 +4,7 @@ import com.recruiting.backend.exception.UserNotFoundException;
 import com.recruiting.backend.model.Candidate;
 import com.recruiting.backend.repo.CandidateRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -22,7 +23,7 @@ public class CandidateService {
     }
 
     public List<Candidate> findAllCandidates() {
-        return candidateRepo.findAll();
+        return candidateRepo.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 
     public Candidate updateCandidate(Candidate candidate) {
