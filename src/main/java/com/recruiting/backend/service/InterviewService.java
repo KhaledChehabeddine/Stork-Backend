@@ -5,6 +5,7 @@ import com.recruiting.backend.exception.UserNotFoundException;
 import com.recruiting.backend.model.Interview;
 import com.recruiting.backend.repo.InterviewRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public class InterviewService {
 
     public Interview addInterview(Interview interview) { return interviewRepo.save(interview); }
 
-    public List<Interview> findAllInterviews() { return interviewRepo.findAll(); }
+    public List<Interview> findAllInterviews() { return interviewRepo.findAll(Sort.by(Sort.Direction.ASC, "dateTime")); }
 
     public Interview updateInterview(Interview interview) { return interviewRepo.save(interview); }
 
