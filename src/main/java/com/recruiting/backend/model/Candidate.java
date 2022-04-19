@@ -17,11 +17,12 @@ public class Candidate implements Serializable {
     private String phone;
     private Date date;
     private String status = "Pending";
+    private Long jobPositionId;
 
     public Candidate() { }
 
     public Candidate(Long id, String firstName, String lastName, String email, String phone, String country, String sex,
-                     Date date, String status) {
+                     Date date, String status, Long jobPositionId) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -31,6 +32,7 @@ public class Candidate implements Serializable {
         this.country = country;
         this.sex = sex;
         this.status = status;
+        this.jobPositionId = jobPositionId;
     }
 
     public Long getId() {
@@ -88,6 +90,10 @@ public class Candidate implements Serializable {
     public String getStatus() { return status; }
 
     public void setStatus(String status) { this.status = status; }
+
+    public Long getJobPositionId() { return jobPositionId; }
+
+    public void setJobPositionId(Long jobPositionId) { this.jobPositionId = jobPositionId; }
 
     @Override
     public String toString() {

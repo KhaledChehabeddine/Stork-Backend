@@ -37,6 +37,12 @@ public class InterviewController {
         return new ResponseEntity<>(lst, HttpStatus.OK);
     }
 
+    @GetMapping("/candidate/num")
+    public ResponseEntity<Integer> getNumAllInterviews(@RequestParam("candidateId") Long candidateId) {
+        Integer len = interviewService.findInterviewsByCandidateId(candidateId).size();
+        return new ResponseEntity<>(len, HttpStatus.OK);
+    }
+
     @PostMapping("/add")
     public ResponseEntity<Interview> addInterview(@RequestBody Interview interview) {
         Interview newInterview = interviewService.addInterview(interview);
