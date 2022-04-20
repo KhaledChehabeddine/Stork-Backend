@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
-public class Employee implements Serializable {
+public class Manager implements Serializable {
     @Id
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -14,10 +14,10 @@ public class Employee implements Serializable {
     private String countryPhone, phone;
     private String gender;
 
-    public Employee() { }
+    public Manager() { }
 
-    public Employee(Long id, String firstName, String lastName, String email, String countryPhone,
-                    String phone, String gender) {
+    public Manager(Long id, String firstName, String lastName, String email, String countryPhone,
+                   String phone, String gender) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
