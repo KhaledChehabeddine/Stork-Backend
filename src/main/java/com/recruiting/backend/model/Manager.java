@@ -75,7 +75,7 @@ public class Manager implements Serializable {
 
     @Override
     public String toString() {
-        return "Employee {" +
+        return "Manager {" +
                 "   id: " + id + "," +
                 "   name: " + firstName + " " + lastName + "," +
                 "   email: " + email + "," +

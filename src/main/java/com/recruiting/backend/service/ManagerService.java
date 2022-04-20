@@ -17,17 +17,17 @@ public class ManagerService {
     @Autowired
     public ManagerService(ManagerRepo managerRepo) { this.managerRepo = managerRepo; }
 
-    public Manager addManager(Manager employee) { return managerRepo.save(employee); }
+    public Manager addManager(Manager manager) { return managerRepo.save(manager); }
 
     public List<Manager> findAllManagers() {
         return managerRepo.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 
-    public Manager updateManager(Manager employee) { return managerRepo.save(employee); }
+    public Manager updateManager(Manager manager) { return managerRepo.save(manager); }
 
     public Manager findManagerById(Long id) {
         return managerRepo.findManagerById(id)
-                .orElseThrow(() -> new UserNotFoundException("Employee with id: " + id + " is not found."));
+                .orElseThrow(() -> new UserNotFoundException("Manager with id: " + id + " is not found."));
     }
 
     public void deleteManager(Long id) { managerRepo.deleteManagerById(id); }
