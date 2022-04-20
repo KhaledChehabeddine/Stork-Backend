@@ -11,16 +11,18 @@ public class Employee implements Serializable {
     private Long id;
     private String firstName, lastName;
     private String email;
-    private String phone;
+    private String countryPhone, phone;
     private String gender;
 
     public Employee() { }
 
-    public Employee(Long id, String firstName, String lastName, String email, String phone, String gender) {
+    public Employee(Long id, String firstName, String lastName, String email, String countryPhone,
+                    String phone, String gender) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+        this.countryPhone = countryPhone;
         this.phone = phone;
         this.gender = gender;
     }
@@ -52,6 +54,10 @@ public class Employee implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getCountryPhone() { return this.countryPhone; }
+
+    public void setCountryPhone(String countryPhone) { this.countryPhone = countryPhone; }
 
     public String getPhone() {
         return this.phone;
