@@ -17,11 +17,12 @@ public class Vacancy implements Serializable {
     private Date datePosted;
     private String workType;
     private String employmentType;
+    private Date expectedStartDate;
 
     public Vacancy () {}
 
     public Vacancy(Long id, String jobTitle, String country, String city, String jobDescription, Date datePosted,
-                   String workType, String employmentType) {
+                   String workType, String employmentType, Date expectedStartDate) {
         this.id = id;
         this.jobTitle = jobTitle;
         this.country = country;
@@ -30,6 +31,7 @@ public class Vacancy implements Serializable {
         this.datePosted = datePosted;
         this.workType = workType;
         this.employmentType = employmentType;
+        this.expectedStartDate = expectedStartDate;
     }
 
     public Long getId() {
@@ -91,6 +93,10 @@ public class Vacancy implements Serializable {
     public String getEmploymentType() {
         return employmentType;
     }
+
+    public void setExpectedStartDate(Date expectedStartDate) { this.expectedStartDate = expectedStartDate; }
+
+    public Date getExpectedStartDate() { return expectedStartDate; }
 
     public void setEmploymentType(String employmentType) {
         this.employmentType = employmentType;
