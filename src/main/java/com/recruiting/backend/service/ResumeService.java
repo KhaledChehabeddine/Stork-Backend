@@ -19,9 +19,9 @@ public class ResumeService {
     @Autowired
     public ResumeService(ResumeRepo resumeRepo) { this.resumeRepo = resumeRepo; }
 
-    public Resume addResume(MultipartFile file, Long id) throws IOException {
-        String resumeName = StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename()));
-        Resume resume = new Resume(id, resumeName, file.getContentType(), file.getBytes());
+    public Resume addResume(byte[] file, Long id) throws IOException {
+        String resumeName = "Resume";
+        Resume resume = new Resume(id, resumeName, "pdf", file);
         return resumeRepo.save(resume);
     }
 

@@ -8,6 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import java.util.Base64;
 
 import static org.springframework.http.MediaType.MULTIPART_FORM_DATA_VALUE;
 
@@ -23,7 +24,8 @@ public class ResumeController {
     @PostMapping(path= "/add", consumes = {MULTIPART_FORM_DATA_VALUE})
     public ResponseEntity<Resume> addResume(@RequestParam("resume") MultipartFile file, @RequestParam("id") Long id)
             throws IOException {
-        Resume resume = resumeService.addResume(file, id);
+        byte[] encodedFile = Base64.getEncoder().encode(file.getBytes());
+        Resume resume = resumeService.addResume(encodedFile, id);
         return new ResponseEntity<>(resume, HttpStatus.OK);
     }
 
@@ -31,7 +33,8 @@ public class ResumeController {
     public ResponseEntity<byte[]> findResumeById(@RequestParam("id") Long id) {
         Resume resume = resumeService.findResumeById(id);
         return ResponseEntity.ok()
-                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resume.getName() + "\"")
+                .header(HttpHeaders.CONTENT_TYPE, "application/pdf")
+                .header(HttpHeaders.CONTENT_ENCODING, "utf-8")
                 .body(resume.getData());
     }
 }
