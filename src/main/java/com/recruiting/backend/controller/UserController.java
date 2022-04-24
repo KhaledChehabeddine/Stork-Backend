@@ -82,12 +82,11 @@ public class UserController {
         if (user.getPasswordHash().equals(passwordHash)) {
             return new ResponseEntity<>(user, HttpStatus.OK);
         }
-        return new ResponseEntity<>("Password does not match", HttpStatus.NOT_ACCEPTABLE);
+        throw new UserNotFoundException("Passwords do not match.");
     }
 
     @ExceptionHandler(UserNotFoundException.class)
-    public ResponseEntity<Error> handleUserNotFoundException(UserNotFoundException err) {
-        Error error = new Error(err.getLocalizedMessage());
-        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+    public ResponseEntity<?> handleUserNotFoundException(UserNotFoundException err) {
+        return new ResponseEntity<>(err.getLocalizedMessage(), HttpStatus.NOT_FOUND);
     }
 }
