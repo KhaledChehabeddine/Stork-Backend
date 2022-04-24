@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/candidate")
-public class    CandidateController {
+public class CandidateController {
     private final CandidateService candidateService;
 
     public CandidateController(CandidateService candidateService) {

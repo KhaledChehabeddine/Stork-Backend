@@ -74,4 +74,20 @@ public class UserController {
         userService.deleteUserByUsername(username);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @PostMapping("/auth")
+    public ResponseEntity<?> authUser(@RequestParam("username") String username,
+                                         @RequestParam("passwordHash") String passwordHash) {
+        User user = userService.findUserByUsername(username);
+        if (user.getPasswordHash().equals(passwordHash)) {
+            return new ResponseEntity<>(user, HttpStatus.OK);
+        }
+        return new ResponseEntity<>("Password does not match", HttpStatus.NOT_ACCEPTABLE);
+    }
+
+    @ExceptionHandler(UserNotFoundException.class)
+    public ResponseEntity<Error> handleUserNotFoundException(UserNotFoundException err) {
+        Error error = new Error(err.getLocalizedMessage());
+        return new ResponseEntity<>(error, HttpStatus.NOT_FOUND);
+    }
 }
