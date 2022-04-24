@@ -17,25 +17,25 @@ public class UserController {
 
     public UserController(UserService userService) { this.userService = userService; }
 
-    @GetMapping("/all")
+    @PostMapping("/all")
     public ResponseEntity<List<User>> getAllUsers() {
         List<User> lst = userService.findAllUsers();
         return new ResponseEntity<>(lst, HttpStatus.OK);
     }
 
-    @GetMapping("/id")
+    @PostMapping("/id")
     public ResponseEntity<User> getUserById(@RequestParam("id") Long id) {
         User user = userService.findUserById(id);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @GetMapping("/email")
+    @PostMapping("/email")
     public ResponseEntity<User> getUserByEmail(@RequestParam("email") String email) {
         User user = userService.findUserByEmail(email);
         return new ResponseEntity<>(user, HttpStatus.OK);
     }
 
-    @GetMapping("/username")
+    @PostMapping("/username")
     public ResponseEntity<User> getUserByUsername(@RequestParam("username") String username) {
         User user = userService.findUserByUsername(username);
         return new ResponseEntity<>(user, HttpStatus.OK);
