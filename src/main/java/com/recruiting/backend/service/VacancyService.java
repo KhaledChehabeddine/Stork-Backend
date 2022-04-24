@@ -21,6 +21,10 @@ public class VacancyService {
         return vacancyRepo.save(vacancy);
     }
 
+    public Vacancy updateVacancy(Vacancy vacancy) {
+        return vacancyRepo.save(vacancy);
+    }
+
     public List<Vacancy> findAllVacancies() {
         return vacancyRepo.findAll();
     }

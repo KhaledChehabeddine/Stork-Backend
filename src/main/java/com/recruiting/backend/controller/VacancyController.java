@@ -36,6 +36,12 @@ public class VacancyController {
         return new ResponseEntity<>(newVacancy, HttpStatus.CREATED);
     }
 
+    @PutMapping("/update")
+    public ResponseEntity<Vacancy> updateVacancy(@RequestBody Vacancy vacancy) {
+        Vacancy updated = vacancyService.updateVacancy(vacancy);
+        return new ResponseEntity<>(updated, HttpStatus.OK);
+    }
+
     @Transactional
     @PostMapping("/delete")
     public ResponseEntity<?> deleteVacancyById(@RequestParam("id") Long id) {
