@@ -43,4 +43,11 @@ public class ResumeController {
         resumeService.deleteResumeByCandidateId(candidateId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @Transactional
+    @PostMapping("/delete")
+    public ResponseEntity<?> deleteResume(@RequestParam("id") Long id) {
+        resumeService.deleteResumeById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
 }
