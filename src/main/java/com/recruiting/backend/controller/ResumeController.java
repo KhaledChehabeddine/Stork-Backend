@@ -6,6 +6,7 @@ import com.recruiting.backend.service.ResumeService;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -21,9 +22,10 @@ public class ResumeController {
     }
 
     @PostMapping(path= "/add", consumes = {MULTIPART_FORM_DATA_VALUE})
-    public ResponseEntity<Resume> addResume(@RequestParam("resume") MultipartFile file, @RequestParam("id") Long id)
+    public ResponseEntity<Resume> addResume(@RequestParam("resume") MultipartFile file, @RequestParam("id") Long id,
+                                            @RequestParam("candidateId") Long candidateId)
             throws IOException {
-        Resume resume = resumeService.addResume(file, id);
+        Resume resume = resumeService.addResume(file, id, candidateId);
         return new ResponseEntity<>(resume, HttpStatus.OK);
     }
 
@@ -33,5 +35,12 @@ public class ResumeController {
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resume.getName() + "\"")
                 .body(resume.getData());
+    }
+
+    @Transactional
+    @PostMapping("/delete/candidate")
+    public ResponseEntity<?> deleteResumeByCandidateId(@RequestParam("candidateId") Long candidateId) {
+        resumeService.deleteResumeByCandidateId(candidateId);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

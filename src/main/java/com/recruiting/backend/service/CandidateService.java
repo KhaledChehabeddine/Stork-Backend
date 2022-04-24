@@ -3,6 +3,7 @@ package com.recruiting.backend.service;
 import com.recruiting.backend.exception.UserNotFoundException;
 import com.recruiting.backend.model.Candidate;
 import com.recruiting.backend.repo.CandidateRepo;
+import com.recruiting.backend.repo.InterviewRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -37,5 +38,9 @@ public class CandidateService {
 
     public void deleteCandidate(Long id) {
         candidateRepo.deleteCandidateById(id);
+    }
+
+    public void deleteCandidatesByJobPositionId(Long jobPositionId) {
+        candidateRepo.deleteCandidatesByJobPositionId(jobPositionId);
     }
 }

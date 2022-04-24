@@ -10,6 +10,8 @@ import java.util.Optional;
 @Repository
 public interface InterviewRepo extends JpaRepository<Interview, Long> {
     void deleteInterviewById(Long id);
+    void deleteInterviewsByCandidateId(Long candidateId);
+    void deleteInterviewsByManagerId(Long managerId);
     Optional<Interview> findInterviewById(Long id);
     Optional<List<Interview>> findInterviewsByCandidateId(Long candidateId);
     Optional<List<Interview>> findInterviewsByManagerId(Long managerId);

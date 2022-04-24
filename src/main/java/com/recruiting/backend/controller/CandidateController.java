@@ -48,4 +48,13 @@ public class CandidateController {
         candidateService.deleteCandidate(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
+
+    @Transactional
+    @PostMapping("/delete/all/job")
+    public ResponseEntity<?> deleteCandidatesByJobPositionId(@RequestParam("jobPositionId") Long jobPositionId) {
+        candidateService.deleteCandidatesByJobPositionId(jobPositionId);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
+
 }

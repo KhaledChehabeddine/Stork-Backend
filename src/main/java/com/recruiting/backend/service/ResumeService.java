@@ -19,9 +19,9 @@ public class ResumeService {
     @Autowired
     public ResumeService(ResumeRepo resumeRepo) { this.resumeRepo = resumeRepo; }
 
-    public Resume addResume(MultipartFile file, Long id) throws IOException {
+    public Resume addResume(MultipartFile file, Long id, Long candidateId) throws IOException {
         String resumeName = StringUtils.cleanPath(Objects.requireNonNull(file.getOriginalFilename()));
-        Resume resume = new Resume(id, resumeName, file.getContentType(), file.getBytes());
+        Resume resume = new Resume(id, candidateId, resumeName, file.getContentType(), file.getBytes());
         return resumeRepo.save(resume);
     }
 
@@ -29,5 +29,13 @@ public class ResumeService {
         return resumeRepo.findResumeById(id).orElseThrow(
                 () -> new UserNotFoundException("Resume with id: " + id + " is not found.")
         );
+    }
+
+    public void deleteResumeById(Long id) {
+        resumeRepo.deleteResumeById(id);
+    }
+
+    public void deleteResumeByCandidateId(Long candidateId) {
+        resumeRepo.deleteResumeByCandidateId(candidateId);
     }
 }

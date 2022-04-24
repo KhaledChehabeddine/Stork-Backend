@@ -38,5 +38,13 @@ public class InterviewService {
                 .orElseThrow(() -> new UserNotFoundException("Manager with id: " + managerId + " is not found."));
     }
 
+    public void deleteInterviewsByCandidateId(Long candidateId) {
+        interviewRepo.deleteInterviewsByCandidateId(candidateId);
+    }
+
+    public void deleteInterviewsByManagerId(Long managerId) {
+        interviewRepo.deleteInterviewsByManagerId(managerId);
+    }
+
     public void deleteInterview(Long id) { interviewRepo.deleteInterviewById(id); }
 }

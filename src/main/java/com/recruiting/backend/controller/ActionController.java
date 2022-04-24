@@ -5,6 +5,7 @@ import com.recruiting.backend.service.ActionService;
 import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -42,7 +43,8 @@ public class ActionController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @PostMapping("/deleteAll")
+    @Transactional
+    @PostMapping("/delete/all")
     public ResponseEntity<?> deleteActionsByCandidateId(@RequestParam("candidateId") Long candidateId) {
         actionService.deleteActionsByCandidateId(candidateId);
         return new ResponseEntity<>(HttpStatus.OK);
