@@ -36,6 +36,11 @@ public class CandidateService {
                 .orElseThrow(() -> new UserNotFoundException("Candidate with email: '" + id + "' is not found."));
     }
 
+    public List<Candidate> findCandidatesByJobPositionId(Long jobPositionId) {
+        return candidateRepo.findCandidatesByJobPositionId(jobPositionId)
+                .orElseThrow(() -> new UserNotFoundException("Candidate not found for job position"));
+    }
+
     public void deleteCandidate(Long id) {
         candidateRepo.deleteCandidateById(id);
     }

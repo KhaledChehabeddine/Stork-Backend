@@ -24,6 +24,12 @@ public class CandidateController {
         return new ResponseEntity<>(candidates, HttpStatus.OK);
     }
 
+    @GetMapping("/all/jobPosition")
+    public ResponseEntity<List<Candidate>> getAllCandidatesByJobPositionId(@RequestParam("jobPositionId") Long id) {
+        List<Candidate> candidates = candidateService.findCandidatesByJobPositionId(id);
+        return new ResponseEntity<>(candidates, HttpStatus.OK);
+    }
+
     @GetMapping("/find")
     public ResponseEntity<Candidate> getCandidateById(@RequestParam("id") Long id) {
         Candidate candidate = candidateService.findCandidateById(id);
@@ -55,6 +61,4 @@ public class CandidateController {
         candidateService.deleteCandidatesByJobPositionId(jobPositionId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
-
 }
