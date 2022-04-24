@@ -11,6 +11,7 @@ public class Interview implements Serializable {
     private Long id;
     private Long candidateId;
     private Long vacancyId;
+    private Long managerId;
     private String dateTime;
     private String description;
 
@@ -43,6 +44,10 @@ public class Interview implements Serializable {
     public String getDescription() { return description; }
 
     public void setDescription(String description) { this.description = description; }
+
+    public Long getManagerId() { return managerId; }
+
+    public void setManagerId(Long managerId) { this.managerId = managerId; }
 
     @Override
     public String toString() {

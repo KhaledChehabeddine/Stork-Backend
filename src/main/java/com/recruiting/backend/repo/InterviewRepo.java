@@ -12,4 +12,5 @@ public interface InterviewRepo extends JpaRepository<Interview, Long> {
     void deleteInterviewById(Long id);
     Optional<Interview> findInterviewById(Long id);
     Optional<List<Interview>> findInterviewsByCandidateId(Long candidateId);
+    Optional<List<Interview>> findInterviewsByManagerId(Long managerId);
 }
