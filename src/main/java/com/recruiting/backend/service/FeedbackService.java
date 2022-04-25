@@ -45,8 +45,4 @@ public class FeedbackService {
     public void deleteFeedbackByCandidateId(Long candidateId) {
         feedbackRepo.deleteFeedbackByCandidateID(candidateId);
     }
-
-    public void deleteFeedbackByManagerId(Long managerId) {
-        feedbackRepo.deleteFeedbackByManagerID(managerId);
-    }
 }

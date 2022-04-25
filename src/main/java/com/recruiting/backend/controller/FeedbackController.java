@@ -63,11 +63,4 @@ public class FeedbackController {
         feedbackService.deleteFeedbackByCandidateId(candidateId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
-
-    @Transactional
-    @PostMapping("/delete/all/manager")
-    public ResponseEntity<?> deleteFeedbackByManagerId(@RequestParam("managerId") Long managerId) {
-        feedbackService.deleteFeedbackByManagerId(managerId);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
 }
