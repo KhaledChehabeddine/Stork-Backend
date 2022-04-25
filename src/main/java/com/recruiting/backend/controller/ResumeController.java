@@ -22,10 +22,9 @@ public class ResumeController {
     }
 
     @PostMapping(path= "/add", consumes = {MULTIPART_FORM_DATA_VALUE})
-    public ResponseEntity<Resume> addResume(@RequestParam("resume") MultipartFile file, @RequestParam("id") Long id,
-                                            @RequestParam("candidateId") Long candidateId)
+    public ResponseEntity<Resume> addResume(@RequestParam("resume") MultipartFile file, @RequestParam("id") Long id)
             throws IOException {
-        Resume resume = resumeService.addResume(file, id, candidateId);
+        Resume resume = resumeService.addResume(file, id);
         return new ResponseEntity<>(resume, HttpStatus.OK);
     }
 

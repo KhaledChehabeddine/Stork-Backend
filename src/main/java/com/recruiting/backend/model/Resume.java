@@ -10,8 +10,6 @@ public class Resume {
     @Column(nullable = false)
     private Long id;
     @Column(nullable = false)
-    private Long candidateId;
-    @Column(nullable = false)
     private String name;
     @Column(nullable = false)
     private String type;
@@ -21,12 +19,11 @@ public class Resume {
 
     public Resume() { }
 
-    public Resume(Long id, Long candidateId, String name, String type, byte[] data) {
+    public Resume(Long id, String name, String type, byte[] data) {
         this.id = id;
         this.name = name;
         this.type = type;
         this.data = data;
-        this.candidateId = candidateId;
     }
 
     public Long getId() {
@@ -59,13 +56,5 @@ public class Resume {
 
     public void setData(byte[] data) {
         this.data = data;
-    }
-
-    public Long getCandidateId() {
-        return candidateId;
-    }
-
-    public void setCandidateId(Long candidateId) {
-        this.candidateId = candidateId;
     }
 }
