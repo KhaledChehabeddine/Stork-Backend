@@ -1,5 +1,6 @@
 package com.recruiting.backend.controller;
 import java.io.IOException;
+import java.util.List;
 
 import com.recruiting.backend.model.Resume;
 import com.recruiting.backend.service.ResumeService;
@@ -19,6 +20,12 @@ public class ResumeController {
 
     public ResumeController(ResumeService resumeService) {
         this.resumeService = resumeService;
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<Resume>> findAll() {
+        List<Resume> all = resumeService.findAll();
+        return new ResponseEntity<>(all, HttpStatus.OK);
     }
 
     @PostMapping(path= "/add", consumes = {MULTIPART_FORM_DATA_VALUE})

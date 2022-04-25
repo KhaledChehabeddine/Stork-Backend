@@ -26,6 +26,12 @@ public class FeedbackController {
         return new ResponseEntity<>(feedbacks, HttpStatus.OK);
     }
 
+    @GetMapping("/all/candidate")
+    public ResponseEntity<List<Feedback>> getInterviewsByCandidateId(@RequestParam("candidateId") Long candidateId) {
+        List<Feedback> feedbacks = feedbackService.findFeedbacksByCandidateId(candidateId);
+        return new ResponseEntity<>(feedbacks, HttpStatus.OK);
+    }
+
     @GetMapping("/find")
     public ResponseEntity<Feedback> getFeedbackById(@RequestParam("id") Long id) {
         Feedback feedback = feedbackService.findFeedbackById(id);

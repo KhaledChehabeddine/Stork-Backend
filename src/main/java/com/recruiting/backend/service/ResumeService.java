@@ -8,6 +8,7 @@ import com.recruiting.backend.exception.UserNotFoundException;
 import com.recruiting.backend.model.Resume;
 import com.recruiting.backend.repo.ResumeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -29,6 +30,10 @@ public class ResumeService {
         return resumeRepo.findResumeById(id).orElseThrow(
                 () -> new UserNotFoundException("Resume with id: " + id + " is not found.")
         );
+    }
+
+    public List<Resume> findAll() {
+        return resumeRepo.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 
     public void deleteResumeById(Long id) {

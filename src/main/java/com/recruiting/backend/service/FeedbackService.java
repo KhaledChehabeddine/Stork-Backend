@@ -30,7 +30,12 @@ public class FeedbackService {
 
     public Feedback findFeedbackById(Long id) {
         return feedbackRepo.findFeedbackById(id)
-                .orElseThrow(() -> new UserNotFoundException("Candidate with email: '" + id + "' is not found."));
+                .orElseThrow(() -> new UserNotFoundException("Feedback with id: '" + id + "' is not found."));
+    }
+
+    public List<Feedback> findFeedbacksByCandidateId(Long candidateId) {
+        return feedbackRepo.findFeedbacksByCandidateID(candidateId)
+                .orElseThrow(() -> new UserNotFoundException("Candidate with id: " + candidateId + " is not found."));
     }
 
     public void deleteFeedback(Long id) {
