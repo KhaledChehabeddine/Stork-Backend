@@ -37,7 +37,7 @@ public class CandidateService {
     }
 
     public List<Candidate> findCandidatesByJobPositionId(Long jobPositionId) {
-        return candidateRepo.findCandidatesByJobPositionId(jobPositionId)
+        return candidateRepo.findCandidatesByJobPositionId(jobPositionId, Sort.by(Sort.Direction.ASC, "id"))
                 .orElseThrow(() -> new UserNotFoundException("Candidate not found for job position"));
     }
 
