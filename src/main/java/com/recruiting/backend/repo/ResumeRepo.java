@@ -8,6 +8,5 @@ import java.util.Optional;
 @Repository
 public interface ResumeRepo extends JpaRepository<Resume, Long> {
     void deleteResumeById(Long id);
-    void deleteResumeByCandidateId(Long candidateId);
     Optional<Resume> findResumeById(Long id);
 }

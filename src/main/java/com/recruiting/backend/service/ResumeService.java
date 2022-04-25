@@ -35,7 +35,4 @@ public class ResumeService {
         resumeRepo.deleteResumeById(id);
     }
 
-    public void deleteResumeByCandidateId(Long candidateId) {
-        resumeRepo.deleteResumeByCandidateId(candidateId);
-    }
 }
