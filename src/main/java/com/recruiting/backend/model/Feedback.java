@@ -21,7 +21,6 @@ public class Feedback implements Serializable {
     public Feedback(Long id, Long candidateID, Long managerID, String notes) {
         this.id = id;
         this.candidateID = candidateID;
-        this.managerID = managerID;
         this.notes = notes;
     }
 
@@ -41,14 +40,6 @@ public class Feedback implements Serializable {
         this.candidateID = candidateID;
     }
 
-    public Long getManagerID() {
-        return managerID;
-    }
-
-    public void setManagerID(Long managerID) {
-        this.managerID = managerID;
-    }
-
     public String getNotes() {
         return notes;
     }
@@ -61,7 +52,6 @@ public class Feedback implements Serializable {
     public String toString() {
         return "Feedback{id='" + id + "'" +
                 ", candidateID='" + candidateID + "'"+
-                ", managerID='" + managerID + "'" +
                 ", notes='" + notes + "'" +
                 "}";
     }
