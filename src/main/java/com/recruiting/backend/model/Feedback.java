@@ -12,8 +12,6 @@ public class Feedback implements Serializable {
     @Column(nullable = false)
     private Long candidateID;
     @Column(nullable = false)
-    private Long managerID;
-    @Column(nullable = false)
     private String notes;
 
     public Feedback() { }
