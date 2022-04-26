@@ -1,10 +1,13 @@
 package com.recruiting.backend.model;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
 @Entity
+@Transactional
 public class Candidate implements Serializable {
     @Id
     @Column(nullable = false)
@@ -27,7 +30,7 @@ public class Candidate implements Serializable {
     @Column(nullable = false)
     private String status = "Pending";
     @ManyToOne(cascade = CascadeType.REMOVE)
-    @JoinColumn(name = "vacancy_id")
+    @JoinColumn(name = "vacancy_id", nullable = false)
     Vacancy jobPosition;
 
     public Candidate() { }

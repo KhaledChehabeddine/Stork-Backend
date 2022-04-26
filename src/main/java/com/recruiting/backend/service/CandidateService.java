@@ -37,7 +37,7 @@ public class CandidateService {
     }
 
     public List<Candidate> findCandidatesByJobPositionId(Long jobPositionId) {
-        return candidateRepo.findCandidatesByVacancyId(jobPositionId, Sort.by(Sort.Direction.ASC, "id"))
+        return candidateRepo.findCandidatesByJobPositionId(jobPositionId, Sort.by(Sort.Direction.ASC, "id"))
                 .orElseThrow(() -> new UserNotFoundException("Candidate not found for job position"));
     }
 
@@ -46,6 +46,6 @@ public class CandidateService {
     }
 
     public void deleteCandidatesByJobPositionId(Long jobPositionId) {
-        candidateRepo.deleteCandidatesByVacancyId(jobPositionId);
+        candidateRepo.deleteCandidatesByJobPositionId(jobPositionId);
     }
 }

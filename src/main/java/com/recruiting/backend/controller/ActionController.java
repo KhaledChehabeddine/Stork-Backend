@@ -19,6 +19,12 @@ public class ActionController {
     }
 
     @GetMapping("/all")
+    public ResponseEntity<List<Action>> getAllActions() {
+        List<Action> actions = actionService.findAll();
+        return new ResponseEntity<>(actions, HttpStatus.OK);
+    }
+
+    @GetMapping("/all/candidate")
     public ResponseEntity<List<Action>> getActionsByCandidateId(@RequestParam("candidateId") Long candidateId) {
         List<Action> actions = actionService.findActionsByCandidateId(candidateId);
         return new ResponseEntity<>(actions, HttpStatus.OK);

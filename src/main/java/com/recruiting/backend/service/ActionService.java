@@ -22,6 +22,10 @@ public class ActionService {
         return actionRepo.save(action);
     }
 
+    public List<Action> findAll() {
+        return actionRepo.findAll();
+    }
+
     public Action findActionById(Long id) {
         return actionRepo.findActionById(id)
                 .orElseThrow(() -> new ActionNotFoundException("Action with id " + id + " was not found"));
