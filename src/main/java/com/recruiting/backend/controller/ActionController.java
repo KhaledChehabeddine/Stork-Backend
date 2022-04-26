@@ -2,7 +2,6 @@ package com.recruiting.backend.controller;
 
 import com.recruiting.backend.model.Action;
 import com.recruiting.backend.service.ActionService;
-import org.apache.coyote.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
@@ -37,16 +36,10 @@ public class ActionController {
         return new ResponseEntity<>(newAction, HttpStatus.OK);
     }
 
+    @Transactional
     @PostMapping("/delete")
     public ResponseEntity<?> deleteAction(@RequestParam("id") Long id) {
         actionService.deleteActionById(id);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-    @Transactional
-    @PostMapping("/delete/all")
-    public ResponseEntity<?> deleteActionsByCandidateId(@RequestParam("candidateId") Long candidateId) {
-        actionService.deleteActionsByCandidateId(candidateId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

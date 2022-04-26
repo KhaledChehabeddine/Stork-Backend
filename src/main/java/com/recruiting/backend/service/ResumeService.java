@@ -5,6 +5,7 @@ import java.util.Objects;
 import java.util.stream.Stream;
 
 import com.recruiting.backend.exception.UserNotFoundException;
+import com.recruiting.backend.model.Candidate;
 import com.recruiting.backend.model.Resume;
 import com.recruiting.backend.repo.ResumeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,7 +37,7 @@ public class ResumeService {
         return resumeRepo.findAll(Sort.by(Sort.Direction.ASC, "id"));
     }
 
-    public void deleteResumeById(Long id) {
+    public void deleteResumeByCandidate(Long id) {
         resumeRepo.deleteResumeById(id);
     }
 

@@ -2,6 +2,7 @@ package com.recruiting.backend.controller;
 import java.io.IOException;
 import java.util.List;
 
+import com.recruiting.backend.model.Candidate;
 import com.recruiting.backend.model.Resume;
 import com.recruiting.backend.service.ResumeService;
 import org.springframework.http.HttpHeaders;
@@ -29,7 +30,8 @@ public class ResumeController {
     }
 
     @PostMapping(path= "/add", consumes = {MULTIPART_FORM_DATA_VALUE})
-    public ResponseEntity<Resume> addResume(@RequestParam("resume") MultipartFile file, @RequestParam("id") Long id)
+    public ResponseEntity<Resume> addResume(@RequestParam("resume") MultipartFile file,
+                                            @RequestParam("id") Long id)
             throws IOException {
         Resume resume = resumeService.addResume(file, id);
         return new ResponseEntity<>(resume, HttpStatus.OK);
@@ -46,7 +48,7 @@ public class ResumeController {
     @Transactional
     @PostMapping("/delete")
     public ResponseEntity<?> deleteResume(@RequestParam("id") Long id) {
-        resumeService.deleteResumeById(id);
+        resumeService.deleteResumeByCandidate(id);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

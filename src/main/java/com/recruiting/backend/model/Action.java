@@ -9,8 +9,9 @@ public class Action {
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @Column(nullable = false)
-    private Long candidateId;
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "candidate_id")
+    private Candidate candidate;
     @Column(nullable = false)
     private Date date;
     @Column(nullable = false)
@@ -18,9 +19,9 @@ public class Action {
 
     public Action() { }
 
-    public Action(Long id, Long candidateId, Date date, String title) {
+    public Action(Long id, Candidate candidate, Date date, String title) {
         this.id = id;
-        this.candidateId = candidateId;
+        this.candidate = candidate;
         this.date = date;
         this.title = title;
     }
@@ -33,11 +34,12 @@ public class Action {
         return id;
     }
 
-    public long getCandidateId() {
-        return candidateId;
+    public Candidate getCandidate() {
+        return candidate;
     }
-    public void setCandidateId(Long candidateId) {
-        this.candidateId = candidateId;
+
+    public void setCandidate(Candidate candidate) {
+        this.candidate = candidate;
     }
 
     public Date getDate() {
@@ -56,7 +58,7 @@ public class Action {
 
     public String toString() {
         return "Action{id='" + id + "'" +
-                ", candidateId='" + candidateId + "'" +
+                ", candidate='" + candidate + "'" +
                 ", date='" + date + "'" +
                 ", title='" + title + "'" +
                 "}";

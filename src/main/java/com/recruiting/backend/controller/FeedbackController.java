@@ -21,14 +21,8 @@ public class FeedbackController {
     }
 
     @GetMapping("/all")
-    public ResponseEntity<List<Feedback>> getAllInterviews() {
-        List<Feedback> feedbacks = feedbackService.findAllFeedbacks();
-        return new ResponseEntity<>(feedbacks, HttpStatus.OK);
-    }
-
-    @GetMapping("/all/candidate")
-    public ResponseEntity<List<Feedback>> getInterviewsByCandidateId(@RequestParam("candidateId") Long candidateId) {
-        List<Feedback> feedbacks = feedbackService.findFeedbacksByCandidateId(candidateId);
+    public ResponseEntity<List<Feedback>> getAllFeedbacks(@RequestParam("candidateId") Long id) {
+        List<Feedback> feedbacks = feedbackService.findFeedbacksByCandidateId(id);
         return new ResponseEntity<>(feedbacks, HttpStatus.OK);
     }
 
@@ -54,13 +48,6 @@ public class FeedbackController {
     @PostMapping("/delete")
     public ResponseEntity<?> deleteFeedback(@RequestParam("id") Long id) {
         feedbackService.deleteFeedback(id);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
-    @Transactional
-    @PostMapping("/delete/all/candidate")
-    public ResponseEntity<?> deleteFeedbackByCandidateId(@RequestParam("candidateId") Long candidateId) {
-        feedbackService.deleteFeedbackByCandidateId(candidateId);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

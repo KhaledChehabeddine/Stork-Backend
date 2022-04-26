@@ -10,19 +10,30 @@ public class Candidate implements Serializable {
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
     private String email;
-    private String firstName, lastName;
+    @Column(nullable = false)
+    private String firstName;
+    @Column(nullable = false)
+    private String lastName;
+    @Column(nullable = false)
     private String country;
+    @Column(nullable = false)
     private String sex;
+    @Column(nullable = false)
     private String phone;
+    @Column(nullable = false)
     private Date date;
+    @Column(nullable = false)
     private String status = "Pending";
-    private Long jobPositionId;
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "vacancy_id")
+    Vacancy jobPosition;
 
     public Candidate() { }
 
     public Candidate(Long id, String firstName, String lastName, String email, String phone, String country, String sex,
-                     Date date, String status, Long jobPositionId) {
+                     Date date, String status, Vacancy jobPosition) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -32,7 +43,7 @@ public class Candidate implements Serializable {
         this.country = country;
         this.sex = sex;
         this.status = status;
-        this.jobPositionId = jobPositionId;
+        this.jobPosition = jobPosition;
     }
 
     public Long getId() {
@@ -91,9 +102,13 @@ public class Candidate implements Serializable {
 
     public void setStatus(String status) { this.status = status; }
 
-    public Long getJobPositionId() { return jobPositionId; }
+    public Vacancy getJobPosition() {
+        return jobPosition;
+    }
 
-    public void setJobPositionId(Long jobPositionId) { this.jobPositionId = jobPositionId; }
+    public void setJobPosition(Vacancy jobPosition) {
+        this.jobPosition = jobPosition;
+    }
 
     @Override
     public String toString() {

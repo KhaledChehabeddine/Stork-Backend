@@ -9,18 +9,27 @@ public class Interview implements Serializable {
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long candidateId;
-    private Long vacancyId;
-    private Long managerId;
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "candidate_id")
+    private Candidate candidate;
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "vacancy_id")
+    private Vacancy jobPosition;
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "manager_id")
+    private Manager manager;
+    @Column(nullable = false)
     private String dateTime;
+    @Column(nullable = false)
     private String description;
 
     public Interview() { }
 
-    public Interview(Long id, String candidate_id, String vacancy_id, String date_time, String description) {
+    public Interview(Long id, Candidate candidate, Vacancy jobPosition, Manager manager, String date_time, String description) {
         this.id = id;
-        this.candidateId = Long.parseLong(candidate_id);
-        this.vacancyId = Long.parseLong(vacancy_id);
+        this.candidate = candidate;
+        this.jobPosition = jobPosition;
+        this.manager = manager;
         this.dateTime = date_time;
         this.description = description;
     }
@@ -29,13 +38,29 @@ public class Interview implements Serializable {
 
     public void setId(Long id) { this.id = id; }
 
-    public Long getCandidateId() { return candidateId; }
+    public Candidate getCandidate() {
+        return candidate;
+    }
 
-    public void setCandidateId(Long candidate_id) { this.candidateId = candidate_id; }
+    public void setCandidate(Candidate candidate) {
+        this.candidate = candidate;
+    }
 
-    public Long getVacancyId() { return vacancyId; }
+    public Vacancy getJobPosition() {
+        return jobPosition;
+    }
 
-    public void setVacancyId(Long vacancy_id) { this.vacancyId = vacancy_id; }
+    public void setJobPosition(Vacancy jobPosition) {
+        this.jobPosition = jobPosition;
+    }
+
+    public Manager getManager() {
+        return manager;
+    }
+
+    public void setManager(Manager manager) {
+        this.manager = manager;
+    }
 
     public String getDateTime() { return dateTime; }
 
@@ -45,15 +70,11 @@ public class Interview implements Serializable {
 
     public void setDescription(String description) { this.description = description; }
 
-    public Long getManagerId() { return managerId; }
-
-    public void setManagerId(Long managerId) { this.managerId = managerId; }
-
     @Override
     public String toString() {
         return "Interview{id='" + id + "'" +
-                ", candidate_id='" + candidateId + "'" +
-                ", vacancy_id='" + vacancyId + "'" +
+                ", candidate='" + candidate + "'" +
+                ", jobPosition='" + jobPosition + "'" +
                 ", date_time='" + dateTime + "'" +
                 ", description='" + description + "'" +
                 "}";

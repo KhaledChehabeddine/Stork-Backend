@@ -9,9 +9,17 @@ public class Manager implements Serializable {
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String firstName, lastName;
+    @Column(nullable = false)
+    private String firstName;
+    @Column(nullable = false)
+    private String lastName;
+    @Column(nullable = false)
     private String email;
-    private String countryPhone, phone;
+    @Column(nullable = false)
+    private String countryPhone;
+    @Column(nullable = false)
+    private String phone;
+    @Column(nullable = false)
     private String gender;
 
     public Manager() { }
