@@ -10,13 +10,21 @@ public class Vacancy implements Serializable {
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(nullable = false)
     private String jobTitle;
+    @Column(nullable = false)
     private String country;
+    @Column(nullable = false)
     private String city;
+    @Column(nullable = false)
     private String jobDescription;
+    @Column(nullable = false)
     private Date datePosted;
+    @Column(nullable = false)
     private String workType;
+    @Column(nullable = false)
     private String employmentType;
+    @Column(nullable = false)
     private Date expectedStartDate;
 
     public Vacancy () {}

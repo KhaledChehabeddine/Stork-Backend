@@ -9,16 +9,17 @@ public class Feedback implements Serializable {
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(nullable = false)
-    private Long candidateID;
+    @ManyToOne(cascade = CascadeType.REMOVE)
+    @JoinColumn(name = "candidate_id")
+    private Candidate candidate;
     @Column(nullable = false)
     private String notes;
 
     public Feedback() { }
 
-    public Feedback(Long id, Long candidateID, Long managerID, String notes) {
+    public Feedback(Long id, Candidate candidate, Long managerID, String notes) {
         this.id = id;
-        this.candidateID = candidateID;
+        this.candidate = candidate;
         this.notes = notes;
     }
 
@@ -30,12 +31,12 @@ public class Feedback implements Serializable {
         this.id = id;
     }
 
-    public Long getCandidateID() {
-        return candidateID;
+    public void setCandidate(Candidate candidate) {
+        this.candidate = candidate;
     }
 
-    public void setCandidateID(Long candidateID) {
-        this.candidateID = candidateID;
+    public Candidate getCandidate() {
+        return candidate;
     }
 
     public String getNotes() {
@@ -49,7 +50,7 @@ public class Feedback implements Serializable {
     @Override
     public String toString() {
         return "Feedback{id='" + id + "'" +
-                ", candidateID='" + candidateID + "'"+
+                ", candidateID='" + candidate + "'"+
                 ", notes='" + notes + "'" +
                 "}";
     }

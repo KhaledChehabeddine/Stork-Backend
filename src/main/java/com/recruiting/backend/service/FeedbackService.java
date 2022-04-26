@@ -34,7 +34,7 @@ public class FeedbackService {
     }
 
     public List<Feedback> findFeedbacksByCandidateId(Long candidateId) {
-        return feedbackRepo.findFeedbacksByCandidateID(candidateId)
+        return feedbackRepo.findFeedbacksByCandidateId(candidateId)
                 .orElseThrow(() -> new UserNotFoundException("Candidate with id: " + candidateId + " is not found."));
     }
 
@@ -43,6 +43,6 @@ public class FeedbackService {
     }
 
     public void deleteFeedbackByCandidateId(Long candidateId) {
-        feedbackRepo.deleteFeedbackByCandidateID(candidateId);
+        feedbackRepo.deleteFeedbackByCandidateId(candidateId);
     }
 }

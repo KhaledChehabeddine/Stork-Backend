@@ -10,7 +10,7 @@ import java.util.Optional;
 @Repository
 public interface FeedbackRepo extends JpaRepository<Feedback, Long> {
     void deleteFeedbackById(Long id);
-    void deleteFeedbackByCandidateID(Long candidateId);
+    void deleteFeedbackByCandidateId(Long candidateId);
     Optional<Feedback> findFeedbackById(Long id);
-    Optional<List<Feedback>> findFeedbacksByCandidateID(Long candidateId);
+    Optional<List<Feedback>> findFeedbacksByCandidateId(Long candidateId);
 }

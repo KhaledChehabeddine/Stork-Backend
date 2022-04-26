@@ -43,25 +43,12 @@ public class InterviewController {
         return new ResponseEntity<>(len, HttpStatus.OK);
     }
 
-    @Transactional
-    @PostMapping("/candidate/delete")
-    public ResponseEntity<?> deleteInterviewsByCandidateId(@RequestParam("candidateId") Long candidateId) {
-        interviewService.deleteInterviewsByCandidateId(candidateId);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
-
     @GetMapping("/manager")
     public ResponseEntity<List<Interview>> getInterviewsByManagerId(@RequestParam("managerId") Long managerId) {
         List<Interview> lst = interviewService.findInterviewsByManagerId(managerId);
         return new ResponseEntity<>(lst, HttpStatus.OK);
     }
 
-    @Transactional
-    @PostMapping("/manager/delete")
-    public ResponseEntity<?> deleteInterviewsByManagerId(@RequestParam("manager") Long manager) {
-        interviewService.deleteInterviewsByManagerId(manager);
-        return new ResponseEntity<>(HttpStatus.OK);
-    }
 
     @PostMapping("/add")
     public ResponseEntity<Interview> addInterview(@RequestBody Interview interview) {
