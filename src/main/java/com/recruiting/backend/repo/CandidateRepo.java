@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface CandidateRepo extends JpaRepository<Candidate, Long> {
     void deleteCandidateById(Long id);
-    void deleteCandidatesByJobPositionId(Long jobPositionId);
+    void deleteCandidatesByVacancyId(Long jobPositionId);
     Optional<Candidate> findCandidateById(Long id);
-    Optional<List<Candidate>> findCandidatesByJobPositionId(Long jobPositionId, Sort sort);
+    Optional<List<Candidate>> findCandidatesByVacancyId(Long jobPositionId, Sort sort);
 }
