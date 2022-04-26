@@ -26,7 +26,7 @@ public class Candidate implements Serializable {
     private Date date;
     @Column(nullable = false)
     private String status = "Pending";
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "vacancy_id")
     Vacancy jobPosition;
 
