@@ -9,7 +9,7 @@ public class Action {
     @Column(nullable = false)
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    @ManyToOne(cascade = CascadeType.REMOVE)
+    @ManyToOne(cascade = CascadeType.REFRESH)
     @JoinColumn(name = "candidate_id")
     private Candidate candidate;
     @Column(nullable = false)
